@@ -1,0 +1,19 @@
+{
+  "name": "chat_backend",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "eslint": "^9.9.0",
+    "eslint-config-standard": "^17.1.0",
+    "hono": "^4.5.5"
+  },
+  "devDependencies": {
+    "@hono/eslint-config": "^0.0.6",
+    "@hono/zod-validator": "^0.2.2",
+    "@types/bun": "latest",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "zod": "^3.23.8"
+  }
+}
