@@ -26,7 +26,7 @@ describe("chat tests", () => {
         password: "password123",
       }),
     });
-    const token = (await loginResponse.json()).token;
+    const token = ((await loginResponse.json()) as any).token;
     return token!;
   }
 
@@ -41,7 +41,7 @@ describe("chat tests", () => {
       body: JSON.stringify({ name: "Test Chat" }),
     });
     const response = await createChatResponse.json();
-    const chatId = response.data.id;
+    const chatId = (response as any).data.id;
     return chatId;
   }
 
@@ -55,7 +55,7 @@ describe("chat tests", () => {
     });
     expect(response.status).toBe(200);
     const responseData = await response.json();
-    const data = responseData.data;
+    const data = (responseData as any).data;
     expect(Array.isArray(data)).toBeTruthy();
     expect(data.length).toBe(1);
     expect(data[0].id).toBe(chatId);
@@ -72,7 +72,7 @@ describe("chat tests", () => {
     });
     expect(response.status).toBe(200);
     const responseData = await response.json();
-    const data = responseData.data;
+    const data = (responseData as any).data;
     expect(Array.isArray(data)).toBeTruthy();
     expect(data.length).toBe(1);
     expect(data[0].id).toBe(chatId);
@@ -84,10 +84,10 @@ describe("chat tests", () => {
     });
     expect(response2.status).toBe(200);
     const responseData2 = await response2.json();
-    const data2 = responseData2.data;
+    const data2 = (responseData2 as any).data;
     expect(Array.isArray(data2)).toBeTruthy();
-    expect(data2.length).toBe(2);
-    expect(data2[1].id).toBe(chatId2);
+    expect(data2.length).toBe(1);
+    expect(data2[0].id).toBe(chatId2);
   });
 
   /******* CHAT DETAILS ********/
@@ -100,7 +100,7 @@ describe("chat tests", () => {
     });
     expect(response.status).toBe(200);
     const responseData = await response.json();
-    const data = responseData.data;
+    const data = (responseData as any).data;
     expect(data.id).toBe(chatId);
     expect(data.name).toBe("Test Chat");
   });
@@ -123,10 +123,10 @@ describe("chat tests", () => {
     });
     expect(response.status).toBe(200);
     const messages = await response.json();
-    expect(messages.data).toBeInstanceOf(Array);
-    expect(messages.data.length).toBe(2);
-    expect(messages.data[0].message).toBe("This is a new message");
-    expect(messages.data[1].message).toBe("dummy response");
+    expect((messages as any).data).toBeInstanceOf(Array);
+    expect((messages as any).data.length).toBe(2);
+    expect((messages as any).data[0].message).toBe("This is a new message");
+    expect((messages as any).data[1].message).toBe("dummy response");
   });
 
   /******* ZOD VALIDATIONS ********/

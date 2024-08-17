@@ -27,7 +27,7 @@ const CHAT_DETAIL_ROUTE = ":id/";
 const CHAT_MESSAGE_ROUTE = ":id/message/";
 export function createChatApp(
   chatResource: IDatabaseResource<DBChat, DBCreateChat>,
-  messageResource: IDatabaseResource<DBMessage, DBCreateMessage>,
+  messageResource: IDatabaseResource<DBMessage, DBCreateMessage>
 ) {
   const chatApp = new Hono<ContextVariables>();
 
@@ -71,13 +71,21 @@ export function createChatApp(
       const responseMessage: DBCreateMessage = {
         message: "dummy response",
         chatId,
-        type: "assistant",
+        type: "system",
       };
 
       const data = await messageResource.create(responseMessage);
 
-      return c.json({ data });
-    },
+      return c.json({ data }, 201);
+    }
   );
+
+  // Endpoints delete a message in a chat room for a user
+  chatApp.delete(CHAT_ROUTE, zValidator("json", idSchema), async (c) => {
+    const { id } = c.req.valid("json");
+    const data = await messageResource.delete(id);
+    return c.json({ data });
+  });
+
   return chatApp;
 }

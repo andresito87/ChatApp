@@ -68,7 +68,7 @@ describe("auth tests", () => {
       }),
     });
     expect(loginResponse.status).toBe(200);
-    const token = (await loginResponse.json())["token"];
+    const token = ((await loginResponse.json()) as any).token;
     expect(token).toBeTruthy();
     const res2 = await app.request("/api/v1/chat/", {
       method: "GET",

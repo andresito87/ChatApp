@@ -34,7 +34,7 @@ const loginSchema = z.object({
 });
 
 export function createAuthApp(
-  userResource: IDatabaseResource<DBUser, DBCreateUser>,
+  userResource: IDatabaseResource<DBUser, DBCreateUser>
 ) {
   authApp.post(
     REGISTER_ROUTE,
@@ -48,8 +48,8 @@ export function createAuthApp(
         algorithm: "bcrypt",
       });
       await userResource.create({ name, email, password: hashedPassword });
-      return c.json({ success: true });
-    },
+      return c.json({ success: true }, 201);
+    }
   );
 
   authApp.post(LOGIN_ROUTE, zValidator("json", loginSchema), async (c) => {

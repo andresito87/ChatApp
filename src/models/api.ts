@@ -1,10 +1,10 @@
 import type {
-  DBChat,
-  DBCreateChat,
-  DBCreateMessage,
-  DBCreateUser,
-  DBMessage,
-  DBUser,
+    DBChat,
+    DBCreateChat,
+    DBCreateMessage,
+    DBCreateUser,
+    DBMessage,
+    DBUser,
 } from "./db";
 
 export type APICreateUser = DBCreateUser;
