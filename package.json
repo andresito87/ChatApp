@@ -3,7 +3,8 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "hono": "^3.11.11"
+    "hono": "^3.11.11",
+    "pino": "^9.3.2"
   },
   "devDependencies": {
     "@hono/eslint-config": "^0.0.3",

@@ -35,26 +35,34 @@ export function createChatApp(
     const userId = c.get("userId");
     const { name } = c.req.valid("json");
     const data = await chatResource.create({ name, ownerId: userId });
-    return c.json({ data });
+    const res = { data };
+    c.get("cache").clearPath(c.req.path);
+    return c.json(res, 201);
   });
 
   chatApp.get(CHAT_ROUTE, async (c) => {
     const userId = c.get("userId");
     const data = await chatResource.findAll({ ownerId: userId });
-    return c.json({ data });
+    const res = { data };
+    c.get("cache").cache(res);
+    return c.json(res);
   });
 
   chatApp.get(CHAT_DETAIL_ROUTE, zValidator("param", idSchema), async (c) => {
     const { id } = c.req.valid("param");
     const userId = c.get("userId");
     const data = await chatResource.find({ id, ownerId: userId });
-    return c.json({ data });
+    const res = { data };
+    c.get("cache").cache(res);
+    return c.json(res);
   });
 
   chatApp.get(CHAT_MESSAGE_ROUTE, zValidator("param", idSchema), async (c) => {
     const { id: chatId } = c.req.valid("param");
     const data = await messageResource.findAll({ chatId });
-    return c.json({ data });
+    const res = { data };
+    c.get("cache").cache(res);
+    return c.json(res);
   });
 
   chatApp.post(
@@ -75,8 +83,9 @@ export function createChatApp(
       };
 
       const data = await messageResource.create(responseMessage);
-
-      return c.json({ data }, 201);
+      const res = { data };
+      c.get("cache").clearPath(c.req.path);
+      return c.json(res, 201);
     }
   );
 
