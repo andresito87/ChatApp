@@ -36,3 +36,15 @@ Run DB testing
 ```
 docker-compose -f docker_compose_test.yml up -d
 ```
+
+Run Prisma migration on dev enviroment
+
+```
+bun --env-file=.env.dev run prisma migrate deploy
+```
+
+Run tests on dev enviroment with dotenv and Prisma ORM
+
+```
+bunx dotenv -e .env -e .env.test -- bun test
+```
