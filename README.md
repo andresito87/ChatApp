@@ -1,3 +1,16 @@
+# Chat app
+
+## Description
+
+Chat app is a simple chat application that allows users to create chat rooms and send messages to each other.
+
+## Technologies
+
+- Frontend: Svelte
+- Backend: Node.js, Prisma ORM, PostgreSQL
+
+## Installation and usage
+
 ```
 bun install
 bun run dev
