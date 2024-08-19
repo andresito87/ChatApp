@@ -1,8 +1,11 @@
 import { beforeEach, describe, expect, test } from "bun:test";
-import { createInMemoryApp } from "../src/controllers/main";
+//import { createInMemoryApp } from "../src/controllers/main";
 import { Pool } from "pg";
-import { createSQLApp } from "../src/controllers/main";
-import { resetSQLDB } from "./utils";
+//import { createSQLApp } from "../src/controllers/main";
+//import { resetSQLDB } from "./utils";
+import { PrismaClient } from "@prisma/client";
+import { createORMApp } from "../src/controllers/main";
+import { resetORMDB } from "./utils";
 
 describe("chat tests", () => {
   // Use in-memory database
@@ -11,12 +14,20 @@ describe("chat tests", () => {
     app = createInMemoryApp();
   });*/
 
-  const app = createSQLApp();
+  // Use SQL database
+  /*const app = createSQLApp();
   const pool = new Pool({
     connectionString: Bun.env.TEST_DATABASE_URL,
   });
   beforeEach(async () => {
     await resetSQLDB(pool);
+  });*/
+
+  // Use ORM database
+  const app = createORMApp();
+  const prisma = new PrismaClient();
+  beforeEach(async () => {
+    await resetORMDB(prisma);
   });
 
   // Function to get a authorization token

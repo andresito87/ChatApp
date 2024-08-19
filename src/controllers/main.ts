@@ -25,6 +25,12 @@ import {
   MessageSQLResource,
   UserSQLResource,
 } from "../storage/sql";
+import { PrismaClient } from "@prisma/client";
+import {
+  ChatDBResource,
+  MessageDBResource,
+  UserDBResource,
+} from "../storage/orm";
 
 const corsOptions = {
   origin: [Bun.env.CORS_ORIGIN as string],
@@ -55,7 +61,7 @@ export function createMainApp(
 }
 
 // App implementation using in-memory storage
-export function createInMemoryApp() {
+/*export function createInMemoryApp() {
   return createMainApp(
     createAuthApp(new SimpleInMemoryResource<DBUser, DBCreateUser>()),
     createChatApp(
@@ -63,15 +69,25 @@ export function createInMemoryApp() {
       new SimpleInMemoryResource<DBMessage, DBCreateMessage>()
     )
   );
-}
+}*/
 
 // App implementation using SQL storage
-export function createSQLApp() {
+/*export function createSQLApp() {
   const pool = new Pool({
     connectionString: Bun.env.DATABASE_URL,
   });
   return createMainApp(
     createAuthApp(new UserSQLResource(pool)),
     createChatApp(new ChatSQLResource(pool), new MessageSQLResource(pool))
+  );
+}*/
+
+// App implementation using Prisma ORM storage
+export function createORMApp() {
+  const prisma = new PrismaClient();
+  prisma.$connect(); // Good practice to connect to our prisma client after creating it
+  return createMainApp(
+    createAuthApp(new UserDBResource(prisma)),
+    createChatApp(new ChatDBResource(prisma), new MessageDBResource(prisma))
   );
 }
