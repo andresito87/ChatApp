@@ -19,6 +19,12 @@ import { CHAT_PREFIX, createChatApp } from "./chat";
 import { cors } from "hono/cors";
 import { rateLimitMiddleware } from "../middlewares/rateLimiting";
 import { cacheMiddleware } from "../middlewares/cacheMiddleware";
+import { Pool } from "pg";
+import {
+  ChatSQLResource,
+  MessageSQLResource,
+  UserSQLResource,
+} from "../storage/sql";
 
 const corsOptions = {
   origin: [Bun.env.CORS_ORIGIN as string],
@@ -48,6 +54,7 @@ export function createMainApp(
   return app;
 }
 
+// App implementation using in-memory storage
 export function createInMemoryApp() {
   return createMainApp(
     createAuthApp(new SimpleInMemoryResource<DBUser, DBCreateUser>()),
@@ -55,5 +62,16 @@ export function createInMemoryApp() {
       new SimpleInMemoryResource<DBChat, DBCreateChat>(),
       new SimpleInMemoryResource<DBMessage, DBCreateMessage>()
     )
+  );
+}
+
+// App implementation using SQL storage
+export function createSQLApp() {
+  const pool = new Pool({
+    connectionString: Bun.env.DATABASE_URL,
+  });
+  return createMainApp(
+    createAuthApp(new UserSQLResource(pool)),
+    createChatApp(new ChatSQLResource(pool), new MessageSQLResource(pool))
   );
 }

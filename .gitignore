@@ -1,4 +1,6 @@
 node_modules
 # Keep environment variables out of version control in real app
 .env
-data
+# Ignore the database directory
+data/postgres_*
+data/postgres
