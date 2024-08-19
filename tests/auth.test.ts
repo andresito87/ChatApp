@@ -1,10 +1,22 @@
 import { beforeEach, describe, expect, test } from "bun:test";
 import { createInMemoryApp } from "../src/controllers/main";
+import { Pool } from "pg";
+import { createSQLApp } from "../src/controllers/main";
+import { resetSQLDB } from "./utils";
 
 describe("auth tests", () => {
-  let app: ReturnType<typeof createInMemoryApp>;
+  // Use in-memory database
+  /*let app: ReturnType<typeof createInMemoryApp>;
   beforeEach(async () => {
     app = createInMemoryApp();
+  });*/
+
+  const app = createSQLApp();
+  const pool = new Pool({
+    connectionString: Bun.env.TEST_DATABASE_URL,
+  });
+  beforeEach(async () => {
+    await resetSQLDB(pool);
   });
 
   /*********** REGISTER ***********/
