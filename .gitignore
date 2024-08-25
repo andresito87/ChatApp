@@ -3,4 +3,4 @@ node_modules
 .env
 # Ignore the database directory
 data/postgres_*
-data/postgres
+data/postgres/base/*
