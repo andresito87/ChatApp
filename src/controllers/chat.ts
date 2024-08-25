@@ -9,6 +9,7 @@ import type {
   DBMessage,
 } from "../models/db";
 import type { IDatabaseResource } from "../storage/types";
+// import { generateMessageResponse } from "../integrations/generate_message"; // Uncomment this line when GPT is integrated
 
 const idSchema = z.object({
   id: z.string().min(1),
@@ -21,10 +22,12 @@ const chatSchema = z.object({
 const messageSchema = z.object({
   message: z.string().min(1),
 });
+
 export const CHAT_PREFIX = "/chat/";
 const CHAT_ROUTE = "";
 const CHAT_DETAIL_ROUTE = ":id/";
 const CHAT_MESSAGE_ROUTE = ":id/message/";
+
 export function createChatApp(
   chatResource: IDatabaseResource<DBChat, DBCreateChat>,
   messageResource: IDatabaseResource<DBMessage, DBCreateMessage>
@@ -75,11 +78,13 @@ export function createChatApp(
 
       const userMessage: DBCreateMessage = { message, chatId, type: "user" };
       await messageResource.create(userMessage);
+      //const allMessage = await messageResource.findAll({ chatId }); // Uncomment this line when GPT is integrated
+      //const response = await generateMessageResponse(allMessage); // Uncomment this line when GPT is integrated
 
       const responseMessage: DBCreateMessage = {
-        message: "dummy response",
+        message: "dummy response", // change this to response when GPT is integrated
         chatId,
-        type: "system",
+        type: "system", //change this to user when GPT is integrated
       };
 
       const data = await messageResource.create(responseMessage);

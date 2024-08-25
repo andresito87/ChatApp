@@ -150,6 +150,8 @@ describe("chat tests", () => {
     expect((messages as any).data.length).toBe(2);
     expect((messages as any).data[0].message).toBe("This is a new message");
     expect((messages as any).data[1].message).toBe("dummy response");
+    //expect((messages as any).data[0].message).toBe("Hello World"); // This is the expected message from GPT
+    //expect((messages as any).data[1].message?.length).toBeGreaterThan(0); // This is the expected message from GPT
   });
 
   /******* ZOD VALIDATIONS ********/
