@@ -11,7 +11,10 @@ Chat app is a simple chat application that allows users to create chat rooms and
 
 ## Installation and usage
 
+### Backend
+
 ```
+cd chat_backend
 bun install
 bun run dev
 ```
@@ -60,4 +63,12 @@ Run tests on dev enviroment with dotenv and Prisma ORM
 
 ```
 bunx dotenv -e .env -e .env.test -- bun test
+```
+
+### Frontend
+
+```
+cd chat_frontend
+npm install
+npx vite --port=4000
 ```
