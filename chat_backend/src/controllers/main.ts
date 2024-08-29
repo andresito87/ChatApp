@@ -45,11 +45,11 @@ export function createMainApp(
 ) {
   const app = new Hono<ContextVariables>().basePath(API_PREFIX);
 
+  app.use("*", cors(corsOptions)); // Enable CORS for all routes, must be before any other middleware
   app.use("*", timing());
   app.use("*", logger());
   app.use("*", checkJWTAuth);
   app.use("*", attachUserId);
-  app.use("*", cors(corsOptions));
   app.use("*", rateLimitMiddleware);
   app.use("*", cacheMiddleware());
 
