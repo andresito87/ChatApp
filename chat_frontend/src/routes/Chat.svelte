@@ -5,7 +5,7 @@
   import ChatListSideBar from "../components/ChatListSideBar.svelte";
   import ChatDetails from "../components/ChatDetails.svelte";
   import Header from "../components/Header.svelte";
-  //import "../styles/chat.css";
+  import "../styles/chat.css";
 
   // Passed as a prop to the Chat component by the routes
   export let chatId: string | null;

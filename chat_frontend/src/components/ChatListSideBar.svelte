@@ -4,7 +4,7 @@
   import { navigate } from "svelte-routing";
   import CreateChatPopup from "./CreateChatPopup.svelte";
   import { API_HOST } from "../constants";
-  //import "../styles/chatList.css";
+  import "../styles/chatList.css";
 
   // Stores the list of chats
   let chats: { id: string; name: string }[] = [];
@@ -70,13 +70,13 @@
   <div class="chat-list">
     {#each chats as chat (chat.id)}
       <!-- Add the selected class if the chat id matches the selected chat id -->
-      <div
+      <li
         class="class-list-item"
         class:selected={chat.id === chatId}
         on:click={() => selectChat(chat.id)}
       >
         {chat.name}
-      </div>
+      </li>
     {/each}
   </div>
   <button on:click={() => createNewChat()}>New Chat</button>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import axios from "axios";
   import { API_HOST } from "../constants";
-  //import "../styles/chatPopup.css";
+  import "../styles/chatPopup.css";
 
   // Functions passed as props to the component from the parent(ChatListSideBar),
   // to be called when it is necessary

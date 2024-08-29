@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import axios from "axios";
   import { API_HOST } from "../constants";
-  //import "../styles/chatDetails.css";
+  import "../styles/chatDetails.css";
 
   // Stores the chat id that is currently selected, received as a prop
   export let chatId: string;
