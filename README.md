@@ -9,6 +9,20 @@ Chat app is a simple chat application that allows users to create chat rooms and
 - Frontend: Svelte
 - Backend: Node.js, Prisma ORM, PostgreSQL
 
+## App Images
+
+### Login
+
+![Login](./screenshots/login.png)
+
+### Register
+
+![Register](./screenshots/create-account.png)
+
+### Chat rooms
+
+![Chat rooms](./screenshots/create-chat.png)
+
 ## Installation and usage
 
 ### Backend
@@ -71,4 +85,11 @@ bunx dotenv -e .env -e .env.test -- bun test
 cd chat_frontend
 npm install
 npx vite --port=4000
+```
+
+### Run backend with env variables and frontend, ready to use
+
+```
+Backend folder --> bun --env-file .env.dev dev
+Frontend folder -->npm run dev
 ```
