@@ -41,5 +41,7 @@
     <div class="error">{errorMessage}</div>
   {/if}
   <input type="text" bind:value={chatName} placeholder="Enter chat name" />
-  <button disabled={!chatName.length} on:click={createChat}>{$_("Create")}</button>
+  <button disabled={!chatName.length} on:click={createChat}
+    >{$_("Create")}</button
+  >
 </div>

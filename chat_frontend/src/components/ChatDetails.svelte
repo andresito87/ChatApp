@@ -80,9 +80,9 @@
   <textarea bind:value={newMessage} placeholder="Type a message"></textarea>
   <button on:click={sendMessage} disabled={isLoading}>
     {#if isLoading}
-    {$_("Sending")}
+      {$_("Sending")}
     {:else}
-    {$_("Send")}
+      {$_("Send")}
     {/if}
   </button>
 </div>

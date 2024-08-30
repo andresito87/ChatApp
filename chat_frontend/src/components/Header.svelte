@@ -18,8 +18,8 @@
   <div class="user-name">{name}</div>
   <div class="locale">
     <select bind:value={$locale}>
-      <option value="en-US" selected={ $locale === 'en-US' }>English</option>
-      <option value="es-ES" selected={ $locale === 'es-ES' }>Spanish</option>
+      <option value="en-US" selected={$locale === "en-US"}>English</option>
+      <option value="es-ES" selected={$locale === "es-ES"}>Spanish</option>
     </select>
   </div>
   <button class="logout-button" on:click={logout}>{$_("logout")}</button>
