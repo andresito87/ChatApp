@@ -2,6 +2,7 @@
   import axios from "axios";
   import { API_HOST } from "../constants";
   import "../styles/chatPopup.css";
+  import { _, locale } from "svelte-i18n";
 
   // Functions passed as props to the component from the parent(ChatListSideBar),
   // to be called when it is necessary
@@ -27,10 +28,18 @@
 </script>
 
 <div class="popup">
-  <div class="close-button" on:click={onClose}>X</div>
+  <div
+    class="close-button"
+    on:click={onClose}
+    on:keydown|preventDefault={(e) => e.key === "Enter" && onClose()}
+    role="button"
+    tabindex="0"
+  >
+    X
+  </div>
   {#if errorMessage}
     <div class="error">{errorMessage}</div>
   {/if}
   <input type="text" bind:value={chatName} placeholder="Enter chat name" />
-  <button disabled={!chatName.length} on:click={createChat}>Create</button>
+  <button disabled={!chatName.length} on:click={createChat}>{$_("Create")}</button>
 </div>

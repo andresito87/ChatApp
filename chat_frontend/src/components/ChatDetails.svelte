@@ -3,6 +3,7 @@
   import axios from "axios";
   import { API_HOST } from "../constants";
   import "../styles/chatDetails.css";
+  import { _, locale } from "svelte-i18n";
 
   // Stores the chat id that is currently selected, received as a prop
   export let chatId: string;
@@ -26,7 +27,7 @@
   async function loadMessages() {
     try {
       const response = await axios.get(
-        `${API_HOST}/api/v1/chat/${chatId}/message/`
+        `${API_HOST}/api/v1/chat/${chatId}/message/`,
       );
       messages = response.data.data;
     } catch (error) {
@@ -41,7 +42,7 @@
     try {
       const response = await axios.post(
         `${API_HOST}/api/v1/chat/${chatId}/message/`,
-        { message: newMessage }
+        { message: newMessage },
       );
       messages = [
         ...messages,
@@ -79,9 +80,9 @@
   <textarea bind:value={newMessage} placeholder="Type a message"></textarea>
   <button on:click={sendMessage} disabled={isLoading}>
     {#if isLoading}
-      Sending...
+    {$_("Sending")}
     {:else}
-      Send
+    {$_("Send")}
     {/if}
   </button>
 </div>

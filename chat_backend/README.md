@@ -61,3 +61,10 @@ Run tests on dev enviroment with dotenv and Prisma ORM
 ```
 bunx dotenv -e .env -e .env.test -- bun test
 ```
+
+Run backend with env variables and frontend, ready to use
+
+```
+Backend folder --> bun --env-file .env.dev dev
+Frontend folder -->npm run dev
+```
