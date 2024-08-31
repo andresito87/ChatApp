@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "71134692-15e0-4a63-8b04-93bf51abb505",
+		"name": "App Chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19407551"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"andrespodadera@gmail.com\",\r\n    \"password\":\"andres87\",\r\n    \"name\":\"Andres\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"andrespodadera@gmail.com\",\r\n    \"password\":\"andres87\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create chat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2Y2Q2MTVkLTRiZjUtNDY4My04ZDg5LThmNzRiNmY5ZjExMCIsImNyZWF0ZWRBdCI6IjIwMjQtMDgtMjVUMDg6NTI6NTEuODEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDgtMjVUMDg6NTI6NTEuODEzWiIsIm5hbWUiOiJBbmRyZXMiLCJlbWFpbCI6ImFuZHJlc3BvZGFkZXJhQGdtYWlsLmNvbSJ9.nZ_IxIXeu21Suubv9zlvxjw9x81hGWw9pSoZV94MQdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Chat 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/chat/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"chat",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a chat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW5kcmVzIiwiZW1haWwiOiJhbmRyZXNwb2RhZGVyYTg3QGdtYWlsLmNvbSIsImlkIjoiMCIsImNyZWF0ZWRBdCI6MTcyMzkwMjA4MTM0NSwidXBkYXRlZEF0IjoxNzIzOTAyMDgxMzQ1fQ.iOEe2S2qMfvHY9yHT2ZYPa7X7dCEnDpdEoF-bkvvPhs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/chat/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"chat",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all chats",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2Y2Q2MTVkLTRiZjUtNDY4My04ZDg5LThmNzRiNmY5ZjExMCIsImNyZWF0ZWRBdCI6IjIwMjQtMDgtMjVUMDg6NTI6NTEuODEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDgtMjVUMDg6NTI6NTEuODEzWiIsIm5hbWUiOiJBbmRyZXMiLCJlbWFpbCI6ImFuZHJlc3BvZGFkZXJhQGdtYWlsLmNvbSJ9.nZ_IxIXeu21Suubv9zlvxjw9x81hGWw9pSoZV94MQdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/chat/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"chat",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a message in a chat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2Y2Q2MTVkLTRiZjUtNDY4My04ZDg5LThmNzRiNmY5ZjExMCIsImNyZWF0ZWRBdCI6IjIwMjQtMDgtMjVUMDg6NTI6NTEuODEzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDgtMjVUMDg6NTI6NTEuODEzWiIsIm5hbWUiOiJBbmRyZXMiLCJlbWFpbCI6ImFuZHJlc3BvZGFkZXJhQGdtYWlsLmNvbSJ9.nZ_IxIXeu21Suubv9zlvxjw9x81hGWw9pSoZV94MQdI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"This is a new message\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/chat/a192dddb-7923-49d7-abc3-d4dc7a86f81d/message/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"chat",
+						"a192dddb-7923-49d7-abc3-d4dc7a86f81d",
+						"message",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get chat deatils",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzMzg3ODg0LTBmNTAtNDc2MC05ZDI3LWEwOTJkZjAxMmM3MCIsImNyZWF0ZWRBdCI6IjIwMjQtMDgtMjVUMDY6MTc6MTMuNDgxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDgtMjVUMDY6MTc6MTMuNDgxWiIsIm5hbWUiOiJBbmRyZXMiLCJlbWFpbCI6ImFuZHJlc3BvZGFkZXJhQGdtYWlsLmNvbSJ9.cskVCu5Epwo-oYJj2a8lp0poDU4T8DgCyZdykBLIDOY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/chat/a192dddb-7923-49d7-abc3-d4dc7a86f81d/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"chat",
+						"a192dddb-7923-49d7-abc3-d4dc7a86f81d",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all messages of chat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlVc2VyIjp7Im5hbWUiOiJBbmRyZXMiLCJlbWFpbCI6ImFuZHJlc3BvZGFkZXJhODdAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkL2lTbFJuTWQ1dWZYV0d4ejloRE5rZUhaQjJYeUpSWndrUVk4MmY3L1FuUU02clZqcDNVYXEiLCJpZCI6IjAiLCJjcmVhdGVkQXQiOjE3MjM3NTA2MjI0NzIsInVwZGF0ZWRBdCI6MTcyMzc1MDYyMjQ3Mn19.UWUeOuax0ECYwG2bacEHIU63jyjfx9OTd1HnCYb0fDc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/chat/d0d7431c-8cca-41d6-b0c0-1dbc639f0fa6/message/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"chat",
+						"d0d7431c-8cca-41d6-b0c0-1dbc639f0fa6",
+						"message",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
